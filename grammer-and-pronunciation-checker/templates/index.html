@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Checker</title>
+    <script>
+        function startProcessing() {
+            fetch('/process', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("output").innerText = "You said: " + data.transcribed_text;
+                    
+                    let grammarOutput = "Grammar Issues:\n";
+                    data.grammar_issues.forEach(issue => {
+                        grammarOutput += - ${issue.message} (Suggestions: ${issue.incorrect.join(", ")})\n;
+                    });
+                    document.getElementById("grammar").innerText = grammarOutput;
+
+                    let pronunciationOutput = "Pronunciation Issues:\n";
+                    for (let word in data.pronunciation_issues) {
+                        pronunciationOutput += - ${word}: ${data.pronunciation_issues[word]}\n;
+                    }
+                    document.getElementById("pronunciation").innerText = pronunciationOutput;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Speech Pronunciation & Grammar Checker</h1>
+    <button onclick="startProcessing()">Start Speaking</button>
+    <p id="output"></p>
+    <p id="grammar"></p>
+    <p id="pronunciation"></p>
+</body>
+</html>

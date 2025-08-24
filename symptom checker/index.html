@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Symptom Checker</title>
+    </head>
+    <body>
+        <header>
+            <a href="a" class="logo">
+                <img src="Projectlogo.jpeg.jpg" alt="Logo">
+                <link rel="stylesheet" href="styles.css">
+            </a>
+            <ul class="navbar">
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#Symptoms">Symptoms</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Reviews">Reviews</a></li>
+                <li><a href="#FAQ'S">FAQ'S</a></li>
+                
+
+                
+            </ul>
+            <div class="header-btn">
+                <a href="Appointment" class="Appoinment"> Appointment</a>
+
+            </div>
+        </header>
+        <section class="Home" id="Home">
+            <div class="text">
+                <h1><span>Worried about your health condition?</span>
+                </h1>
+                <p> Take help of our trusted experts by providing your symptons you're worried about. </p>  
+                </div>
+            </div>
+    </section>
+<!-- Symptoms Section -->
+<section class="Symptoms" id="Symptoms">
+    <div class="Symptoms-container">
+        <div class="container">
+            <h1>Symptom Checker</h1>
+            <div class="form-section">
+                <label for="age">Age:</label>
+                <input type="number" id="age" min="1" max="120" placeholder="Enter your age" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="symptoms">Symptoms:</label>
+                <input type="text" id="symptoms" placeholder="e.g., cough, fever" required>
+
+                <button onclick="checkSymptoms()">Check Symptoms</button>
+            </div>
+            <div id="results" class="results-section"></div>
+            <p class="disclaimer">
+                Note: This is not a substitute for professional medical advice. Consult a doctor for an accurate diagnosis.
+            </p>
+        </div>
+    </div>
+
+        </section>
+            <section class="Appoinment" id="Appointment">
+                <header>
+                    <h1 class="odc">Online Doctor Consultation</h1>
+                </header>
+            
+                <section class="doctors-list">
+                    <!-- Doctor 1 -->
+                    <div class="doctor-card">
+                        <img src="doctor1.jpg" alt="Dr.Gayle">
+                        <h2>Dr. GAYEL</h2>
+                        <p><strong>Specialization:</strong> Dermatologist & Hair Expert</p>
+                        <p><strong>Experience:</strong> 8 years</p>
+                        <p><strong>Languages:</strong> English, Hindi, Telugu</p>
+                        <button class="consult-btn" onclick="openConsultation('Dr. Gayle', 32)">Talk Now @ ₹32/min</button>
+                    </div>
+            
+                    <!-- Doctor 2 -->
+                    <div class="doctor-card">
+                        <img src="doctor2.jpg" alt="Dr.Perry">
+                        <h2>Dr. PERRY</h2>
+                        <p><strong>Specialization:</strong> Dermatologist & Hair Transplant Surgeon</p>
+                        <p><strong>Experience:</strong> 6 years</p>
+                        <p><strong>Languages:</strong> English, Hindi, Marathi</p>
+                        <button class="consult-btn" onclick="openConsultation('Dr. PERRY', 32)">Talk Now @ ₹32/min</button>
+                    </div>
+            
+                    <!-- Doctor 3 -->
+                    <div class="doctor-card">
+                        <img src="doctor3.jpg" alt="Dr.Buttler">
+                        <h2>Dr. BUTTLER</h2>
+                        <p><strong>Specialization:</strong> Diabetologist</p>
+                        <p><strong>Experience:</strong> 5 years</p>
+                        <p><strong>Languages:</strong> English, Tamil</p>
+                        <button class="consult-btn" onclick="openConsultation('Dr. Buttler', 30)">Talk Now @ ₹30/min</button>
+                    </div>
+                </section>
+            
+                <!-- Consultation Modal -->
+                <div id="consultationModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeConsultation()">&times;</span>
+                        <h2 id="doctorName"></h2>
+                        <p>Choose a payment option:</p>
+                        <button class="payment-btn" onclick="startConsultation('fixed')">Pay ₹349 - Unlimited</button>
+                        <button class="payment-btn" onclick="startConsultation('per_min')">Pay ₹30/min - Min ₹300 Required</button>
+                    </div>
+                </div>
+            </section>
+            <section class="about-section" id="About">
+                <div class="container">
+                    <h1>About Us</h1>
+                    <p>Welcome to HealthConnect, your trusted platform for understanding your health. We aim to empower individuals by providing clear, reliable information about disease symptoms and connecting you with expert doctors for personalized advice.</p>
+                    <p>Our mission is to bridge the gap between patients and healthcare professionals, making it easier for you to take control of your well-being. Whether you're seeking answers or expert guidance, we’re here to support you every step of the way.</p>
+                </div>
+            </section>
+
+
+
+             <!-- FAQ Section -->
+<section class="faq" id="FAQ'S">
+    <div class="faq-container">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <div class="faq-list">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <h3 class="faq-question">What is a Symptom Checker?</h3>
+                    <p class="faq-answer">
+                        A Symptom Checker is a tool that helps users identify potential health conditions based on the symptoms they enter. It provides a list of possible conditions but is not a substitute for professional medical advice.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <h3 class="faq-question">How accurate is the Symptom Checker?</h3>
+                    <p class="faq-answer">
+                        The Symptom Checker provides general information based on the symptoms entered. However, it is not 100% accurate and should not replace a consultation with a healthcare professional.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <h3 class="faq-question">What information do I need to provide?</h3>
+                    <p class="faq-answer">
+                        You need to provide your age, gender, and a list of symptoms (e.g., cough, fever, headache). The more accurate your inputs, the better the results.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I use this tool for emergencies?</h3>
+                    <p class="faq-answer">
+                        No, this tool is not designed for emergencies. If you are experiencing a medical emergency, please contact your local emergency services immediately.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <h3 class="faq-question">Is my data safe?</h3>
+                    <p class="faq-answer">
+                        Yes, your data is safe. We do not store any personal information entered into the Symptom Checker.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+           
+
+
+
+           
+
+            <section class="reviews-section" id="Reviews">
+                <h2>Customer Reviews</h2>
+                <p>See what our users are saying about their experience with our Symptom Checker!</p>
+                
+                <div class="reviews-container">
+                  <!-- Review Cards will be dynamically added here -->
+                </div>
+            
+                <button id="add-review-btn" class="review-user">Add Your Review</button>
+              </section>
+            
+              <!-- Review Form (Hidden by Default) -->
+              <div id="review-form-modal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h3>Add Your Review</h3>
+                  <form id="review-form">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="rating">Rating:</label>
+                    <select id="rating" name="rating" required>
+                      <option value="5">5 Stars</option>
+                      <option value="4">4 Stars</option>
+                      <option value="3">3 Stars</option>
+                      <option value="2">2 Stars</option>
+                      <option value="1">1 Star</option>
+                    </select>
+                    
+                    <label for="comment">Your Review:</label>
+                    <textarea id="comment" name="comment" rows="4" required></textarea>
+                    
+                    <button type="submit">Submit Review</button>
+                  </form>
+                </div>
+              </div>
+           
+
+
+
+
+              <footer>
+                <div class="footer-content">
+                    <div class="app-links">
+                        <a href="#"><img src="google-paly.jpg" alt="Google Play"></a>
+                        <a href="#"><img src="app-store.jpg" alt="App Store"></a>
+                    </div>
+        
+                    <div class="links">
+                        <div>
+                            <a href="#">Health matters</a>
+                            <a href="#">Money Matters</a>
+                            <a href="#">Nutrition Matters</a>
+                        </div>
+                        <div>
+                            <a href="#">Reviews</a>
+                            <a href="#">Returns & Refunds</a>
+                            <a href="#">Contact Us</a>
+                            <a href="#">Privacy Policy</a>
+                        </div>
+                        <div>
+                            <a href="#">FAQs</a>
+                            <a href="#">About Us</a>
+                            <a href="#">Site Map</a>
+                        </div>
+                    </div>
+        
+                    <div class="footer-bottom">
+                        <p>©️ Nibhasha PVT LTD || All rights reserved.</p>
+                        <p><a href="#">Terms of Service</a></p>
+                    </div>
+        
+                    <div class="social-icons">
+                        <a href="#"><img src="faceook-icon.jpg" alt="Facebook"></a>
+                        <a href="#"><img src="instagram-icon.jpg" alt="Instagram"></a>
+                        <a href="#"><img src="twitter-icon.jpg" alt="Twitter"></a>
+                        <a href="#"><img src="youtube-icon.jpg" alt="YouTube"></a>
+                    </div>
+                </div>
+            </footer>
+
+            <script src="script.js"></script>
+        </body>
+</html>

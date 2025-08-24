@@ -1,0 +1,409 @@
+* {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif; /* Changed to Poppins */
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden; /* Prevent horizontal scrollbars */
+  background-color: #e9eef2; /* Light background for the whole page */
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* White header background */
+  color: #333; /* Darker text color for header elements */
+  padding: 20px 50px; /* Adjusted padding */
+  height: 90px; /* Adjusted height */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  flex: 1;
+  text-align: center;
+}
+
+.logo img {
+  max-width: 120px; /* Allow logo to be a bit larger */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.date-time {
+  flex: 1;
+  font-size: 0.9rem; /* Slightly smaller date/time */
+  font-weight: 500;
+  color: #555; /* Greyish color for date/time */
+  text-align: left;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-btn {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px; /* Added gap between buttons */
+}
+
+.header-btn a {
+  padding: 10px 20px;
+  font-weight: 600; /* Bolder button text */
+  border-radius: 5px; /* Rounded corners for buttons */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.header-btn .sign-up {
+  background-color: #F0803C; /* Theme color for sign up */
+  color: #ffffff;
+  border: 1px solid #F0803C;
+}
+
+.header-btn .sign-up:hover {
+  background-color: #e0702c;
+}
+
+.header-btn .sign-in {
+  background-color: #f0f0f0; /* Light grey for sign in */
+  color: #333;
+  border: 1px solid #dcdcdc;
+}
+
+.header-btn .sign-in:hover {
+  background-color: #e0e0e0;
+}
+
+/* Page Body Wrapper */
+.page-body-wrapper {
+  display: flex;
+  padding: 20px; /* Padding around the main content area */
+  gap: 20px; /* Gap between sidebars and main content */
+  align-items: flex-start;
+}
+
+/* News Sidebar (Left) */
+.news-sidebar {
+  width: 280px; /* Adjusted width */
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 8px; /* Rounded corners */
+  height: auto; /* Let content define height */
+  flex-shrink: 0;
+}
+
+.news-sidebar ul {
+  padding: 0;
+  margin: 0;
+}
+
+.news-sidebar li {
+  margin-bottom: 10px; /* Spacing between items */
+}
+
+.news-sidebar li a {
+  font-size: 1rem;
+  font-weight: 500; /* Normal weight, active will be bolder */
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  display: block; /* Make link fill width for better click area */
+  padding: 8px 12px; /* Padding for links */
+  border-radius: 4px; /* Rounded corners for links */
+}
+
+.news-sidebar li a:hover {
+  color: #F0803C;
+  background-color: #f9f9f9; /* Subtle hover background */
+  padding-left: 16px; /* Indent on hover */
+}
+
+.news-sidebar li a.active {
+  color: #F0803C;
+  font-weight: 700; /* Bolder for active */
+  background-color: #fff5ee; /* Light theme color background for active */
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1; /* Takes up available space */
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* News Layout Container (First Row of Articles) */
+.news-layout-container {
+  display: flex;
+  gap: 25px; /* Gap between featured and other news */
+  margin-bottom: 30px; /* Space below this row */
+}
+
+.featured-news-column {
+  flex: 3; /* Wider column for featured article */
+  display: flex;
+  flex-direction: column;
+}
+
+.other-news-column {
+  flex: 2; /* Narrower column for side articles */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Gap between side articles */
+}
+
+.other-news-column h3 {
+  font-size: 1.5rem; /* Slightly smaller heading */
+  margin-top: 0;
+  margin-bottom: 15px; /* Increased margin */
+  color: #2c3e50;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #F0803C; /* Theme color border */
+}
+
+/* Article Styling (General) */
+.featured-article-main, .side-article {
+  background-color: #fdfdfd; /* Slightly off-white for articles */
+  border: 1px solid #e9e9e9; /* Lighter border */
+  border-radius: 6px; /* Rounded corners for articles */
+  overflow: hidden; /* Ensure content stays within rounded corners */
+}
+
+.featured-article-main {
+  padding: 0; /* Remove padding, image will be edge-to-edge */
+  display: flex; /* Added for stretching capability in the new section */
+  flex-direction: column; /* Added */
+}
+
+.featured-article-main img {
+  width: 100%;
+  height: auto;
+  max-height: 380px; /* Max height for top featured image */
+  object-fit: cover;
+  /* border-radius: 6px 6px 0 0; Removed, image is part of flex */
+  display: block; /* Remove any extra space below image */
+}
+
+.featured-article-main .article-content {
+  padding: 20px; /* Padding for content */
+  display: flex; /* Added */
+  flex-direction: column; /* Added */
+  flex-grow: 1; /* Added for stretching */
+}
+
+.featured-article-main .article-content h2 {
+  font-size: 1.8rem; /* Adjusted size */
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  line-height: 1.3;
+}
+
+.featured-article-main .article-content h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.featured-article-main .article-content h2 a:hover {
+  color: #F0803C;
+}
+
+.article-meta {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
+
+.article-meta .publish-date,
+.article-meta .author-name {
+  font-weight: 500;
+}
+
+.featured-article-main .article-content p:not(.article-meta) { /* Target main paragraph */
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #34495e;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Allow main paragraph to expand in stretched card */
+}
+
+.read-more {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  align-self: flex-start; /* Align to start of flex container */
+  margin-top: auto; /* Push to bottom if content above is short */
+}
+
+.read-more:hover {
+  background-color: #2980b9;
+}
+
+/* Side Article Styling */
+.side-article {
+  display: flex;
+  gap: 15px;
+  padding: 15px; /* Increased padding */
+}
+
+.side-article img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 4px; /* Rounded corners for thumbnail */
+  flex-shrink: 0;
+}
+
+.article-content-small {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-content-small h4 {
+  font-size: 1.05rem; /* Slightly larger */
+  margin-top: 0;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.article-content-small h4 a {
+  color: #34495e;
+  text-decoration: none;
+}
+
+.article-content-small h4 a:hover {
+  color: #F0803C;
+}
+
+.article-meta-small {
+  font-size: 0.75rem;
+  color: #95a5a6;
+  margin-bottom: 8px;
+}
+
+.article-content-small p { /* Summary text */
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Allows text to take available space before button */
+}
+
+.read-more-small {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #7f8c8d;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+  align-self: flex-start; /* Align to start */
+  margin-top: auto; /* Push to bottom */
+}
+
+.read-more-small:hover {
+  background-color: #6c7a7d;
+}
+
+/* START: Styles for New Three-Article Layout (Second Row) */
+.three-article-layout {
+  display: flex;
+  gap: 25px; /* Consistent with .news-layout-container */
+  margin-top: 30px; /* Space above this new section */
+  padding-top: 25px; /* Padding above the content in this section */
+  border-top: 1px solid #e0e0e0; /* Visual separator */
+  align-items: stretch; /* Key for making columns equal height */
+}
+
+.three-article-left-column {
+  flex: 3; /* Same flex ratio as .featured-news-column */
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack its children (the article) */
+}
+
+/* Ensure the featured article within this specific column stretches */
+.three-article-left-column .featured-article-main {
+  flex-grow: 1; /* Make the article card itself grow to fill the column */
+  /* Image max-height is already set, content will grow */
+}
+
+/* Image styling for the tall left article in the new section */
+.three-article-left-column .featured-article-main img {
+    max-height: 300px; /* You might want a different max-height or aspect ratio control here */
+    /* Or remove max-height if you want image to be taller, but ensure object-fit is good */
+}
+
+
+.three-article-right-column {
+  flex: 2; /* Same flex ratio as .other-news-column */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Consistent gap between stacked articles */
+}
+/* END: Styles for New Three-Article Layout */
+
+
+/* Right Column (Map and Weather) */
+.right-column {
+  width: 320px; /* Adjusted width */
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  height: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Gap between map and weather */
+}
+
+.map-container, .weather-container {
+  background-color: #f9f9f9; /* Light background for these widgets */
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #efefef;
+}
+
+.map-container h3, .weather-container h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.weather-container p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+.weather-container img {
+  display: block; /* Center image if needed or align */
+  margin-top: 5px;
+}
+
+.weather-container .weather-icon {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+}

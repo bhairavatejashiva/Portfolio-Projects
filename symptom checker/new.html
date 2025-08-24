@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthConnect | Symptom Checker</title>
+    <link rel="stylesheet" href="new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <a href="#" class="logo">
+            <img src="Projectlogo.jpeg.jpg" alt="Logo">
+            <span>HealthConnect</span>
+        </a>
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#symptoms">Checker</a></li>
+            <li><a href="#appointment">Doctors</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+        </ul>
+        <div class="header-btn">
+            <a href="#appointment" class="appointment-btn">Appointment</a>
+        </div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Worried About Your Health?</h1>
+            <p>Use our intelligent symptom checker to understand your condition, then connect with trusted medical experts for advice.</p>
+            <a href="#symptoms" class="btn-primary">Check Symptoms Now</a>
+        </div>
+    </section>
+
+    <section class="symptoms-section reveal" id="symptoms">
+        <div class="section-container">
+            <h2>Symptom Checker</h2>
+            <p class="section-subtitle">Enter your details below for a preliminary analysis.</p>
+            <div class="symptom-checker-container">
+                <div class="form-section">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" min="1" max="120" placeholder="Enter your age" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value=
+                        "female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="symptoms-input">Symptoms:</label>
+                    <input type="text" id="symptoms-input" placeholder="e.g., cough, fever, headache" required>
+
+                    <button class="btn-primary" onclick="checkSymptoms()">Analyze Symptoms</button>
+                </div>
+                <div id="results" class="results-section"></div>
+                <p class="disclaimer">Note: This tool is for informational purposes only and is not a substitute for professional medical advice.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="appointment-section reveal" id="appointment">
+        <div class="section-container">
+            <h2>Online Doctor Consultation</h2>
+            <p class="section-subtitle">Connect with our top-rated specialists.</p>
+            <div class="doctors-list">
+                <div class="doctor-card">
+                    <img src="doctor1.jpg" alt="Dr. John Williams">
+                    <h3>Dr. John Snow</h3>
+                    <p><strong>Specialty:</strong> General Physician</p>
+                    <p><strong>Experience:</strong> 8 years</p>
+                    <p><strong>Languages:</strong> English, Hindi, Telugu</p>
+                    <button class="consult-btn" onclick="openConsultation('Dr. John Williams', 32)">Talk Now @ ₹32/min</button>
+                </div>
+                <div class="doctor-card">
+                    <img src="doctor2.jpg" alt="Dr. Sarah Chen">
+                    <h3>Dr. Sansa</h3>
+                    <p><strong>Specialty:</strong> Pediatrics</p>
+                    <p><strong>Experience:</strong> 6 years</p>
+                    <p><strong>Languages:</strong> English, Hindi, Marathi</p>
+                    <button class="consult-btn" onclick="openConsultation('Dr. Sarah Chen', 32)">Talk Now @ ₹32/min</button>
+                </div>
+                <div class="doctor-card">
+                    <img src="doctor3.jpg" alt="Dr. Mark Davis">
+                    <h3>Dr. Terian Lannister</h3>
+                    <p><strong>Specialty:</strong> Dermatologist</p>
+                    <p><strong>Experience:</strong> 5 years</p>
+                    <p><strong>Languages:</strong> English, Tamil</p>
+                    <button class="consult-btn" onclick="openConsultation('Dr. Mark Davis', 30)">Talk Now @ ₹30/min</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section reveal" id="about">
+        <div class="section-container">
+            <h2>About HealthConnect</h2>
+            <p>Welcome to HealthConnect, your trusted platform for understanding your health. We aim to empower individuals by providing clear, reliable information about disease symptoms and connecting you with expert doctors for personalized advice.</p>
+            <p>Our mission is to bridge the gap between patients and healthcare professionals, making it easier for you to take control of your well-being. Whether you're seeking answers or expert guidance, we’re here to support you every step of the way.</p>
+        </div>
+    </section>
+
+    <section class="reviews-section reveal" id="reviews">
+        <div class="section-container">
+            <h2>What Our Users Say</h2>
+            <p class="section-subtitle">Real stories from people we've helped.</p>
+            <div class="reviews-container">
+                <!-- Reviews will be dynamically added here -->
+            </div>
+            <button id="add-review-btn" class="btn-primary">Add Your Review</button>
+        </div>
+    </section>
+
+    <section class="faq-section reveal" id="faqs">
+        <div class="section-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">What is a Symptom Checker?</h3>
+                    <div class="faq-answer">
+                        <p>A Symptom Checker is an interactive tool that helps users identify potential health conditions based on their symptoms. It provides a list of possibilities but is not a substitute for a professional diagnosis.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How accurate is the Symptom Checker?</h3>
+                    <div class="faq-answer">
+                        <p>Our tool provides a data-driven likelihood of conditions but should always be followed by a consultation with a healthcare professional for an accurate diagnosis.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is my data safe?</h3>
+                    <div class="faq-answer">
+                        <p>Yes, your privacy is our priority. We do not store any personal health information entered into the Symptom Checker. All data is anonymized.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>HealthConnect</h4>
+                <p>© 2025 Nibhasha PVT LTD. All rights reserved.</p>
+                <div class="app-links">
+                    <a href="#"><img src="google-paly.jpg" alt="Google Play"></a>
+                    <a href="#"><img src="app-store.jpg" alt="App Store"></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="#about">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="#faqs">FAQs</a>
+                <a href="#">Health Matters</a>
+                <a href="#">Site Map</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="facebook-icon.jpg" alt="Facebook"></a>
+                    <a href="#"><img src="instagram-icon.jpg" alt="Instagram"></a>
+                    <a href="#"><img src="twitter-icon.jpg" alt="Twitter"></a>
+                    <a href="#"><img src="youtube-icon.jpg" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeConsultation()">&times;</span>
+            <h2 id="doctorName"></h2>
+            <p>Choose a payment option:</p>
+            <button class="payment-btn" onclick="startConsultation('fixed')">Pay ₹349 - Unlimited</button>
+            <button class="payment-btn" onclick="startConsultation('per_min')">Pay per Minute</button>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-form-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn-review">&times;</span>
+            <h3>Add Your Review</h3>
+            <form id="review-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="3">★★★☆☆</option>
+                    <option value="2">★★☆☆☆</option>
+                    <option value="1">★☆☆☆☆</option>
+                </select>
+                <label for="comment">Your Review:</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+                <button type="submit" class="btn-primary">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="new.js"></script>
+</body>
+</html>

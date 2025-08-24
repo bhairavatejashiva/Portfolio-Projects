@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Blog</title>
+  <link rel="stylesheet" href="chatgpt1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="date-time" id="date-time">
+      <div id="current-date"></div>
+      <div id="current-time"></div>
+    </div>
+    <a href="#" class="logo">
+      <img src="https://placehold.co/100x50/F0803C/FFF?text=Logo" alt="Business Logo">
+    </a>
+    <div class="header-btn">
+      <a href="signup.html" class="sign-up">Sign Up</a>
+      <a href="login.html" class="sign-in">Sign In</a>
+    </div>
+  </header>
+
+  <div class="page-body-wrapper">
+    <aside class="news-sidebar">
+      <ul>
+        <li><a href="#" data-category="World" class="active">World</a></li>
+        <li><a href="#" data-category="Politics">Politics</a></li>
+        <li><a href="#" data-category="Business">Business</a></li>
+        <li><a href="#" data-category="Technology">Technology</a></li>
+        <li><a href="#" data-category="Sports">Sports</a></li>
+        <li><a href="#" data-category="Health">Health</a></li>
+        <li><a href="#" data-category="Entertainment">Entertainment</a></li>
+        <li><a href="#" data-category="Ipl2025">Ipl2025</a></li>
+        <li><a href="#" data-category="Ai">Ai</a></li>
+        <li><a href="#" data-category="Geo politics">Geo politics</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content" id="article-container">
+      <!-- Articles will be dynamically loaded here based on category -->
+    </main>
+
+    <aside class="right-column">
+      <div class="map-container">
+        <h3>Map</h3>
+        <iframe
+          src="https://maps.google.com/maps?q=Hyderabad&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%"
+          height="200"
+          style="border:0; border-radius: 5px;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="weather-container">
+        <h3>Weather Report</h3>
+        <p>Weather information for Hyderabad will go here.</p>
+        <img src="https://placehold.co/60x60/A0D2DB/333?text=Weather" alt="Weather icon" style="border-radius: 5px;">
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('article-container');
+
+      function loadArticles(category) {
+        fetch(`/api/articles/${category}`)
+          .then(res => res.json())
+          .then(data => {
+            container.innerHTML = '';
+            data.forEach(article => {
+              container.innerHTML += `
+                <article class="featured-article-main">
+                  <img src="${article.image_url}" alt="${article.title}" />
+                  <div class="article-content">
+                    <h2><a href="article.html?id=${article.id}">${article.title}</a></h2>
+                    <p class="article-meta">Published on <span class="publish-date">${article.publish_date}</span> by <span class="author-name">${article.author}</span></p>
+                    <p>${article.summary}</p>
+                    <a href="article.html?id=${article.id}" class="read-more">Read More »</a>
+                  </div>
+                </article>
+              `;
+            });
+          });
+      }
+
+      // Default category load
+      loadArticles('World');
+
+      document.querySelectorAll('.news-sidebar a').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.querySelectorAll('.news-sidebar a').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          loadArticles(link.dataset.category);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
